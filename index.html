@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>eChronos & lwIP: Toward high-assurance IoT</title>
+
+        <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+        <meta name="author" content="Seb Holzapfel">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/night.css" id="theme">
+
+        <!-- Code syntax highlighting -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+var link = document.createElement( 'link' );
+link.rel = 'stylesheet';
+link.type = 'text/css';
+link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+
+        <!--[if lt IE 9]>
+            <script src="lib/js/html5shiv.js"></script>
+            <![endif]-->
+
+        <style type="text/css">
+        #wrap {
+           width:1000px;
+           margin:0 auto;
+        }
+        #left_col {
+           float:left;
+           width:500px;
+        }
+        #right_col {
+           float:right;
+           width:500px;
+        }
+        </style>
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                <section data-background="images/background1.jpg"> <div id="wrap">
+                        <div id="left_col">
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <h2>eChronos & lwIP</h2>
+                            <h4>Toward high assurance IoT</h4>
+                            <small>Seb Holzapfel - <a href="http://sebholzapfel.com">sebholzapfel.com</a></small>
+                        </div>
+                        <div id="right_col">
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/background2.jpg">
+                    <h3>Bio</h3>
+                    <p>
+                    <ul>
+                        <li class="fragment" data-fragment-index="1">Hobbyist - <a href="http://sebholzapfel.com">sebholzapfel.com</a></li>
+                        <li class="fragment" data-fragment-index="2">Prototyping business</li>
+                        <li class="fragment" data-fragment-index="3">Radio/Radar techie</li>
+                        <li class="fragment" data-fragment-index="4">PCB design business</li>
+                    </ul>
+                    <br>
+                    <img width="170" data-src="images/hobby.png" class="fragment" data-fragment-index="1">
+                    <img width="170" data-src="images/embedded.png" class="fragment" data-fragment-index="2">
+                    <img width="170" data-src="images/vor.png" class="fragment" data-fragment-index="3">
+                    <img width="170" data-src="images/radar.png" class="fragment" data-fragment-index="3">
+                    <img width="170" data-src="images/pcb.png" class="fragment" data-fragment-index="4">
+                        <h4 class="fragment" data-fragment-index="5">tl;dr</h4>
+                        <p class="fragment" data-fragment-index="5">Intern @ CSIRO Data61 (OS Research group, eChronos)</p>
+                        <p class="fragment" data-fragment-index="5">Entering 2nd year EE @ UNSW</p>
+                    </p>
+                </section>
+
+                <section data-background="images/background2.jpg">
+                    <div id="wrap">
+                        <div id="left_col">
+                            <img width="500" data-src="images/echronos-lwip-graphic_01.png" style="border:0; background:none;" class="fragment" data-fragment-index="2">
+                            <img width="500" data-src="images/echronos-lwip-graphic_02.png" style="border:0; background:none;" class="fragment" data-fragment-index="1">
+                            <img width="500" data-src="images/echronos-lwip-graphic_03.png" style="border:0; background:none;">
+                        </div>
+                        <div id="right_col">
+                            <img width="500" data-src="images/echronos-lwip-graphic_04.png" style="border:0; background:none;" class="fragment" data-fragment-index="3">
+                        </div>
+                    </div>
+                    <aside class="notes">
+                        Here's what I've done, just before we move into what I'm going to talk about
+                    </aside>
+                </section>
+
+                <section data-background="images/background2.jpg">
+                    <h3>Going to talk about...</h3>
+                    <ul>
+                        <li class="fragment"><b>eChronos RTOS:</b> What is it? Why is it useful? What do I mean by high-assurance?</li>
+                        <li class="fragment"><b>lwIP:</b> When do I need a TCP/IP stack?  What are they useful for? How do I port a TCP/IP stack to eChronos or my RTOS?</li>
+                        <li class="fragment"><b>Hardware demos:</b> How do I get this running on hardware? What are these systems useful for? (spoiler: anything IoT)</li>
+                    </ul>
+                    <br><br>
+                    <b class="fragment">Interspersed... porting tricks & traps</b>
+                </section>
+
+                <section data-background="images/background2.jpg">
+                    <h3>Hardware Shopping</h3>
+                    <div class="fragment">Ethernet controller, butt-loads of IO, PWM, UART, ICDI etc. ~$30 <br></div>
+                    <div class="fragment">
+                        <img width="600" data-src="images/tm4c1294_board.jpg"> <br>
+                        TI Connected Launchpad: TM4C1294X with an <b>ARM Cortex M4</b> core
+                        <small>Why? Relatively easy to use, inexpensive.</small>
+                    </div>
+
+                    <aside class="notes">
+                        Mention the open-source gcc toolchain & openOCD, both available in most linux distro package libraries.
+                    </aside>
+                </section>
+
+                <section data-background="images/background2.jpg">
+                    <h3>What is an RTOS?</h3>
+                    <div class="fragment">
+                        <b>Real Time Operating System</b><br>
+                        Low-overhead OS, makes guarantees about execution time. Often intended for embedded use. May have heard of...
+                        <br>
+                    </div>
+                    <div class="fragment">
+                        <ul>
+                            <li>FreeRTOS (very common)</li>
+                            <li>Simba OS (arduino)</li>
+                        </ul>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="fragment">
+                        <b>Useful when</b> <br>
+                        Writing firmware that could benefit from primitives like threads, mutexes, signals etc.
+                    </div>
+
+                    <aside class="notes">
+                        Question about who's used an RTOS in their projects before, and why.
+                    </aside>
+                </section>
+
+                <section data-background="images/background2.jpg">
+                    <h3>Why is eChronos interesting?</h3>
+                    <div class="fragment" data-fragment-index="1">
+                        <b>Open-source</b> <br>
+                        eChronos is under AGPLv3 - <a href="https://github.com/echronos/echronos">github.com/echronos</a><br>
+                    </div>
+                    <br>
+                    <div class="fragment" data-fragment-index="2">
+                        <b>High-assurance</b> <br>
+                        A model of the RTOS' architecture is being mathematically verified*<br>
+                    </div>
+                    <br>
+                    <div class="fragment" data-fragment-index="3">
+                        <b>Miniscule overhead</b> <br>
+                        Component-based construction means that the overhead of using this RTOS is kept at a minimum. How? 2 stages.<br>
+                    </div>
+                    <br>
+                    <small class="fragment" data-fragment-index="2">*model-checking for adherence to our specification without unintended side-effects (abstract, not code-level). 'Progress' proofs would be even nicer, perhaps a future project</small>
+                </section>
+
+                <section data-background="images/background2.jpg" data-transition="convex-in fade-out">
+                    <h3>1. Constructing a minimal OS</h3>
+                    <ul>
+                        <li class="fragment">Only include the features you <b>need</b> <br></li>
+                        <li class="fragment">The RTOS has 7 different OS <em>variants</em>. <br></li>
+                    </ul>
+                    <br>
+                    <br>
+                    <div class="fragment">What is a variant? From the source of <code>x.py</code>:
+                    <pre><code class="hlpython" style="word-wrap: break-word;">
+'acrux': [Component('stack', pkg_component=True),
+          Component('context-switch', pkg_component=True),
+          Component('sched-rr', {'assume_runnable': False}),
+          Component('interrupt-event', {'timer_process': False}),
+          Component('simple-mutex'),
+          Component('error'),
+          Component('task'),
+          ...
+          ]
+                    </code></pre></div>
+
+                </section>
+
+                <section data-background="images/background2.jpg" data-transition="fade-in convex-out">
+
+                    <pre><code class="hlpython stretch" style="word-wrap: break-word; font-size: 2.0em; width: 130%; overflow: auto; line-height:1.2em; margin-left:-20%">
+Component('sched-rr', {'assume_runnable': False}),
+Component('simple-mutex'),
+Component('task'),
+                    </code></pre>
+                    <div class="fragment">Normally, you don't need to create your own. <br></div>
+                    <div class="fragment">What about the OS documentation? <em>It's generated, too!</em></div>
+                </section>
+
+                <section data-background="images/background2.jpg" data-transition="convex-in fade-out">
+                    <h3>2. Project files (<code>.prx</code>)</h3>
+                    <div class="fragment">
+                        Declare how your firmware will be structured. Example: <br>
+                        <pre><code class="hlxml" style="word-wrap: break-word;">
+    &lt;system&gt;
+        &lt;modules&gt;
+            &lt;module name="tiva_lwip.http_server" /&gt;
+
+            &lt;module name="tiva_lwip.armv7m.vectable"&gt;
+                &lt;flash_load_addr&gt;0x0000000&lt;/flash_load_addr&gt;
+                &lt;preemption&gt;true&lt;/preemption&gt;
+                ...
+                &lt;external_irqs&gt;
+                    &lt;external_irq&gt;
+                        &lt;number&gt;40&lt;/number&gt;
+                        &lt;handler&gt;lwIPEthernetIntHandler&lt;/handler&gt;
+                    &lt;/external_irq&gt;
+                    ...
+                &lt;/external_irqs&gt;
+            &lt;/module&gt;
+
+            &lt;module name="tiva_lwip.armv7m.rtos-kochab"&gt;
+                ...
+                &lt;tasks&gt;
+                    &lt;task&gt;
+                        &lt;name&gt;ethernet_interrupt_task&lt;/name&gt;
+                        &lt;function&gt;ethernet_interrupt_task&lt;/function&gt;
+                        &lt;priority&gt;14&lt;/priority&gt;
+                        &lt;stack_size&gt;8192&lt;/stack_size&gt;
+                    &lt;/task&gt;
+                    ...
+                &lt;/tasks&gt;
+
+                &lt;semaphores&gt;
+                    &lt;semaphore&gt;
+                        &lt;name&gt;lwip_aux_sem_1&lt;/name&gt;
+                    &lt;/semaphore&gt;
+                &lt;/semaphores&gt;
+                ...
+                        </code></pre>
+                    </div>
+
+                    <aside class="notes">
+                        Extremely quick slide. Here's a module, here's a task, here's a semaphore.
+                        Point out the top module which demonstrates how C plays with these.
+                    </aside>
+                </section>
+
+                <section data-background="images/background2.jpg" data-transition="fade-in convex-out">
+                        <pre><code class="hlxml" style="word-wrap: break-word; font-size: 2.0em; width: 130%; overflow: auto; line-height:1.2em; margin-left:-20%">
+&lt;external_irq&gt;
+    &lt;number&gt;40&lt;/number&gt;
+    &lt;handler&gt;lwIPEthernetIntHandler&lt;/handler&gt;
+&lt;/external_irq&gt;
+...
+&lt;task&gt;
+    &lt;name&gt;ethernet_interrupt_task&lt;/name&gt;
+    &lt;function&gt;ethernet_interrupt_task&lt;/function&gt;
+    &lt;priority&gt;14&lt;/priority&gt;
+    &lt;stack_size&gt;8192&lt;/stack_size&gt;
+&lt;/task&gt;
+...
+&lt;semaphore&gt;
+    &lt;name&gt;lwip_aux_sem_1&lt;/name&gt;
+&lt;/semaphore&gt;
+                        </code></pre>
+                </section>
+
+                <section data-background="images/background2.jpg">
+                    <h3>Why static?</h3>
+                    <ul>
+                        <li class="fragment"><b>Optimize the OS implementation:</b> makes it possible to perform extreme space-saving optimizations - for example, bitpacking the task ID field to 2 bits if there are only 3 tasks.</li>
+                        <li class="fragment"><b>Easier to find bugs in:</b> Code analysis tools find bugs in user-level code much easier. NASA's programming guidelines...</li>
+                        <br>
+                        <br>
+                        <small class="fragment">Interested in learning how to use eChronos? Tutorial running on Friday at 10:40 in D2.211. There's also a quickstart guide in the github repository.</small>
+                    </ul>
+
+                    <aside class="notes">
+                        Brief ad-lib about NASA's programming guidelines, and why static declarations are useful in high-assurance scenarios in general
+                    </aside>
+                </section>
+
+                <section data-background="images/background2.jpg">
+                    <h3>Trap: interrupt priority resolution</h3>
+                    <img class="fragment" data-fragment-index="1" width="400" data-src="images/non-preemptive-graphic.png" style="border:0; background:none;">
+                    <img class="fragment" data-fragment-index="2" width="400" data-src="images/preemptive_graphic.png" style="border:0; background:none;">
+                    <ul>
+                        <div class="fragment" data-fragment-index="1"><li><b>Non-preemptive (co-operative) scheduler</b>: Have to <code>yield()</code> or <code>sleep()</code> to let the RTOS switch from A to B</li></div>
+                        <div class="fragment" data-fragment-index="2"><li><b>Preemptive scheduler</b>: RTOS can change to B when A is in the middle of doing something (if B is higher priority)</li></div>
+                    </ul>
+                    <br><br>
+                    <div class="fragment"><b>Relevant because:</b> Port would hard-fault <em>only</em> when preemption was enabled! <em>why?</em></div>
+                    <br>
+                    <aside class="notes">
+                        Some context, imagine a threaded program ...
+                    </aside>
+                </section>
+
+                <section data-background="images/background2.jpg">
+                    <h3>A closer look</h3>
+                    <ul>
+                        <li class="fragment" data-fragment-index="1">This RTOS (and some others) <em>internally</em> uses the system's <code>pendsv</code> and <code>svc</code> ISRs to facilitate preemption.</li>
+                        <li class="fragment" data-fragment-index="2">It's common to set these 2 interrupts as the 2 lowest-priority interrupts in the system (so they don't mask 'real' interrupts)</li>
+                    </ul>
+                    <br><br>
+                    <h4 class="fragment" data-fragment-index="3">What is a priority?</h4>
+                    <small class="fragment" data-fragment-index="4">ARMv7m reference manual</small>
+                    <blockquote class="fragment" data-fragment-index="4" cite="ARMv7m Reference Manual" style="margin-top:-0.3em">
+                        NVIC Interrupts are prioritized by updating an 8-bit field within a 32-bit register. (Each register supporting 4 interrupts).
+                    </blockquote>
+                    <small class="fragment" data-fragment-index="5">Cortex M4 technical reference manual</small>
+                    <blockquote class="fragment" data-fragment-index="5" cite="ARMv7m Reference Manual" style="margin-top:-0.3em">
+                        NVIC registers [...] described in the ARMv7m Architecture Reference Manual
+                    </blockquote>
+                </section>
+
+                <section data-background="images/background2.jpg">
+                    <h3>Get to the point!</h3>
+                    <p class="fragment">8 bits, so 2 lowest-priority interrupts are 254 and 255, right?<br></p>
+                    <p class="fragment">But the RTOS crashes! <em>Only</em> on hardware.<br></p>
+                    <img class="fragment" width="500" data-src="images/stm_pri.png">
+                    <img class="fragment" width="900" data-src="images/ti_pri.png">
+                    <ul>
+                        <li class="fragment"><b>Problem:</b> <code>254==255</code> in 3/4 bit system, so crashes! </li>
+                        <li class="fragment"><b>Solution:</b> Choose distinct priorities irrespective of lower order bits</li>
+                        <li class="fragment"><b>Moral:</b> Manufacturers cut corners!</li>
+                        <li class="fragment"><b>Result:</b> Patch in RTOS and documentation glob</li>
+                    </ul>
+
+                    <aside class="notes">
+                        (0 = highest priority on ARM)
+                        Works fine in qemu (ARM emulator)
+                        1: STM32F4, 2: TI Tiva 4C
+                    </aside>
+                </section>
+
+                <section data-background="images/background2.jpg">
+                    <h3>OS & Hardware - What else?</h3>
+                    <div class="fragment">
+                        <ul>
+                            <li>Hardware has an ethernet controller</li>
+                            <li>OS runs our code</li>
+                        </ul> <br>
+                    </div>
+                    <div class="fragment">
+                        <br>
+                        But, we need a way to operate the ethernet controller so that we can communicate with a network - a <b>TCP/IP stack</b>. <br>
+                    </div>
+                    <br>
+                    <h3 class="fragment">Answer? lwIP</h3>
+                </section>
+
+                <section data-background="images/background2.jpg">
+                    <h3>lwIP</h3>
+                    <ul>
+                        <li class="fragment"><em>Lightweight IP</em></li>
+                        <li class="fragment">Open-source TCP/IP stack, BSD license</li>
+                        <li class="fragment">Written in C</li>
+                        <li class="fragment">Tiny, easily deals with <b>&lt; 20kB of RAM</b></li>
+                    </ul> <br>
+                    <br>
+                    <div class="fragment">
+                        Allows you to perform high-level TCP/IP operations like HTTP requests, listening to ports, responding to pings (implicit!).
+                    </div>
+
+                    <aside class="notes">
+                        High-level in this context means that lwIP performs a *lot* of handshaking and processing behind the scenes.
+                    </aside>
+                </section>
+
+                <section data-background="images/background2.jpg">
+                    <h3>Nice, but how do I use it on my plaform?</h3>
+                    <p class="fragment">Huge amount of existing ports; there is a good chance one already exists<br></p>
+                    <br>
+                    <p class="fragment"><b>Porting lwIP involves:</b></p>
+                    <ul>
+                        <li class="fragment">Implementing the physical hardware interface</li>
+                        <li class="fragment">Implementing any syscalls that lwIP needs (RTOS dependent!)</li>
+                    </ul> <br>
+                    <br>
+                    <p class="fragment">Both are just a set of stub <code>.h</code> and <code>.c</code> files. <br></p>
+
+                    <aside class="notes">
+                        Going to focus on syscalls, as having to implement your own PHY is rare
+                    </aside>
+                </section>
+
+                <section data-background="images/background2.jpg">
+                    <h3>Syscalls: Some of what lwIP needs:</h3>
+                    <ul>
+                        <li class="fragment" data-fragment-index="1"><b>Threads:</b> <code>sys_arch_thread, <a>sys_arch_thread_new</a>, ... </code></li>
+                        <li class="fragment"><b>Message Queues:</b> <code><a>sys_mbox_new</a>, sys_mbox_post, sys_arch_mbox_fetch, ...</code></li>
+                        <li class="fragment"><b>Semaphores:</b> <code><a>sys_sem_new</a>, sys_sem_post, ...</code></li>
+                    </ul> <br>
+                    <br>
+                    <small class="fragment" data-fragment-index="1"><a>orange</a> == requires dynamic allocation</small>
+
+                    <aside class="notes">
+                        Perhaps briefly mention message queue hacking that was required.
+                    </aside>
+                </section>
+
+                <section data-background="images/background2.jpg">
+                    <h3>eChronos makes this interesting</h3>
+                    <p class="fragment">In exchange for eChronos' high-assurance, we <b>lose dynamic allocation of OS primitives</b>. This means we can't just pull a new task out of thin air, for example.<br></p>
+                    <br>
+                    <div class="fragment">
+                        However, lwIP requires this! What do we do? <br>
+                        <br>
+                        <em>Answer: Cheat</em>
+                    </div>
+                </section>
+
+                <section data-background="images/background2.jpg">
+                    <h3>1. Remove dynamic allocation</h3>
+                    <p class="fragment">
+                    A task may exist for the program lifecycle without a chance of being deleted or reallocated. Similar scenario with other primitives. <br>
+                    </p>
+                    <br>
+                    <ul>
+                        <li class="fragment">Means it's possible for these elements to be static. So,</li>
+                        <li class="fragment">Remove the dynamic allocation, add the element to our <code>.prx</code> file</li>
+                    </ul> <br>
+                    <br>
+                    <small class="fragment">E.g. master TCP thread, ethernet signal response thread, TCP usage lock</small>
+                    <br>
+                    <p class="fragment">However, not every primitive is used like this!</p>
+
+                    <aside class="notes">
+                        Surprisingly, it was possible to remove every dynamically allocated thread from lwIP, all threads are now static.
+                    </aside>
+                </section>
+
+                <section data-background="images/background2.jpg">
+                    <h3>2. Feign a memory manager</h3>
+                    <p class="fragment">With anything else, the solution is to<br></p>
+                    <br>
+                    <ul>
+                        <li class="fragment">Allocate <em>dummy</em> primitives statically (in <code>.prx</code>)</li>
+                        <li class="fragment">Write a <em>manager</em> for dealing with usage of these static resources</li>
+                        <li class="fragment">Put a hard upper bound on the number of these primitives.</li>
+                    </ul> <br>
+                    <br>
+                    <div class="fragment">
+                        Then...<br>
+                        <br>
+                        <ul>
+                            <li>Do traffic benchmarks, ensure we never hit the upper bound.</li>
+                        </ul>
+                    </div>
+                    <small class="fragment"><br>Otherwise bad things will happen!</small>
+                    <aside class="notes">
+                        Illustrate that a 'resource manager' in this case is simply an array full of pointers with an accompanying 'dirty' flag.
+                        Only 4 of each resource was required to be stable!
+                    </aside>
+                </section>
+
+                <section data-background="images/background2.jpg">
+                    <h1>Hardware Demos</h1>
+                </section>
+
+                <section data-background="images/background2.jpg">
+                    <img width="300" data-src="images/geiger_demo.jpg" class="fragment" data-fragment-index="1">&nbsp;&nbsp;&nbsp;
+                    <img width="500" data-src="images/regression_server.jpg" class="fragment" data-fragment-index="2">&nbsp;&nbsp;&nbsp;
+                    <img width="500" data-src="images/light_kitchen.jpg" class="fragment" data-fragment-index="3">&nbsp;&nbsp;&nbsp;
+                    <img width="300" data-src="images/light_hardware.jpg" class="fragment" data-fragment-index="3">&nbsp;&nbsp;&nbsp;
+                </section>
+
+                <section data-background="images/background2.jpg">
+                    <h4>Source code: <a>github.com/Schnommus/echronos-lwip</a></h4>
+                    <h4>eChronos: <a>github.com/echronos/echronos</a></h4>
+                    <h4>Slides (Live): <a>sebholzapfel.com/static/echronos-lwip-slides</a></h4>
+                    <h4>Slides (Source): <a>github.com/Schnommus/echronos-lwip-slides</a></h4>
+                    <h4>Email: <a>schnommus@gmail.com</a> || <a>sebastian.holzapfel@nicta.com.au</a></h4>
+                </section>
+
+            </div>
+
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+
+// Full list of configuration options available at:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
+
+    transition: 'convex', // none/fade/slide/convex/concave/zoom
+
+    // Optional reveal.js plugins
+    dependencies: [
+    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+        { src: 'plugin/zoom-js/zoom.js', async: true },
+            { src: 'plugin/notes/notes.js', async: true }
+    ]
+});
+        </script>
+
+    </body>
+</html>
