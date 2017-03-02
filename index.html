@@ -79,7 +79,12 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
                         <a class="fragment" href="[*|label=layer3]"></a>
                         <a class="fragment" href="[*|label=layer3]"></a>
                     </div>-->
-                    <object id="svg1" data="images/usb-arch-compat.svg" type="image/svg+xml">
+                    <object id="usb-arch-svg" data="images/usb-arch-compat.svg" type="image/svg+xml">
+                    <a id="layer1" class="fragment"></a>
+                    <a id="layer2" class="fragment"></a>
+                    <a id="layer3" class="fragment"></a>
+                    <a id="layer4" class="fragment"></a>
+                    <a id="layer5" class="fragment"></a>
                     </object>
                 </section>
                 <section data-background="images/background2.jpg">
@@ -531,6 +536,31 @@ Reveal.initialize({
     { src: 'reveal-svg-fragment.js', condition: function() { return !!document.querySelector( '[data-svg-fragment]' ); } }
     ]
 });
+
+Reveal.addEventListener( 'ready', function( event ) {
+    var svg = document.getElementById('usb-arch-svg').contentDocument;
+    svg.getElementById("layer1").setAttribute("visibility", "hidden");
+    svg.getElementById("layer2").setAttribute("visibility", "hidden");
+    svg.getElementById("layer3").setAttribute("visibility", "hidden");
+    svg.getElementById("layer4").setAttribute("visibility", "hidden");
+    svg.getElementById("layer5").setAttribute("visibility", "hidden");
+} );
+
+Reveal.addEventListener( 'fragmentshown', function( event ) {
+    if(event.fragment.parentElement.id == 'usb-arch-svg') {
+        var svg = event.fragment.parentElement.contentDocument;
+        var layer = svg.getElementById(event.fragment.id);
+        layer.setAttribute("visibility", "visible");
+    }
+} );
+
+Reveal.addEventListener( 'fragmenthidden', function( event ) {
+    if(event.fragment.parentElement.id == 'usb-arch-svg') {
+        var svg = event.fragment.parentElement.contentDocument;
+        var layer = svg.getElementById(event.fragment.id);
+        layer.setAttribute("visibility", "hidden");
+    }
+} );
         </script>
 
     </body>
