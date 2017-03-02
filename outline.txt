@@ -1,0 +1,59 @@
+- Title slide
+- 6-week summer project; multiplexed with daughterboard work.
+- eChronos RTOS - what is it, what I've worked on in the past/present
+- MMUs vs MPUs
+- What the ARMv7m MPU looks like, restrictions etc.
+- RTOS that already support (Cortex-M) MPUs [arg. most common]
+- Protection model (Vertical, Horizontal) - what we're trying to achieve *kinda* like a SASOS?
+- Protection implementation:
+    - Inline traps (sim. Sloth)
+        - Trapping to a fixed point, then returning straight back
+        - Need to disable MPU in kernel mode - alternative was MPU-only (tried, bad)
+        - Motivation, Limitations
+    - Protection domains (sim. Sloth):
+        - A protection domain is a named area of memory that can optionally
+          be associated with tasks, with different privileges
+        - A protection domain can, at the moment, be:
+            - An 'address domain' which has a fixed size and address (for
+              addressing peripherals for example)
+            - A 'symbol domain' which allows one to specify c identifiers or entire files, and
+              the linker will place data corresponding to this domain in it's own special section.
+        - If a protection domain is associated with a task, that task will have
+          read-only access to it by default.
+            - You can specify that a task also has write or execute access to a domain if desired.
+        - This has the implication that if a task isn't associated with any protection
+          domains, it may only access it's own stack.
+            - (with the exception of the code region which all tasks have RX access to -
+              this is the standard model of MPU usage -- see SLOTH or AUTOSAR OS specifications)
+        - Motivation, Limitations
+    - MPU configuring: Essentially there is a large blob of code that is automatically
+      generated that will fill up an array of values used to configure the MPU based on
+      which task is currently executing.
+        - 2 steps: populating the array (on initialization), and pushing parts to the MPU
+          (on context switch)
+        - It would be much better to actually template the array so there's no runtime
+          initialization required
+            - This is not possible as the linker is given freedom to arrange memory as
+              it desires: we must use linker symbols to initialize the array and perform
+              runtime calculations.
+        - Whenever a context switch occurs, we reconfigure the MPU for the protection domains
+          associated with that task.
+            - On ARMv7m, this limits us to a maximum of 6 associated domains per task
+              (8 regions supported, exclude stack & code)
+            - However, there is no limit (besides memory) on:
+                - The total number of associated domains
+                - The number of tasks that use a particular domain (or any domains)
+        - In theory, for very simple systems there is an optimization here that wouldn't require
+          reconfiguring the MPU completely on a context switch. If there are < 6 domains + stacks
+          in the entire system, one could switch off & on MPU regions instead of reconfiguring it,
+          which would be faster (marginally probably).
+        - Motivation, Limitations^ (Inc. 'paging' MPU regions)
+    - Failure model: fault handler or hard reset.
+- Optimization & speed vs. Sloth
+    - M3/M4 - https://www.silabs.com/documents/public/white-papers/Which-ARM-Cortex-Core-Is-Right-for-Your-Application.pdf
+    - M3 & M4, only difference is M4 has DSP instructions, same DMIPS/MHZ
+    - Which optimizations introduce architectural incompatibilities
+- USB Stack demo architecture
+- USB Stack demo
+    - Works without any faults at all if MPU is disabled!
+- USB Stack - small cheat required, still reduces TCB etc.
