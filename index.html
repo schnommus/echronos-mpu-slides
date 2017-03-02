@@ -74,6 +74,15 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
                 </section>
 
                 <section data-background="images/background2.jpg">
+                    <h3>USB Demo Architecture</h3>
+                    <!--<div data-svg-fragment="images/usb-arch-compat.svg#[*|label=layer1]">
+                        <a class="fragment" href="[*|label=layer3]"></a>
+                        <a class="fragment" href="[*|label=layer3]"></a>
+                    </div>-->
+                    <object id="svg1" data="images/usb-arch-compat.svg" type="image/svg+xml">
+                    </object>
+                </section>
+                <section data-background="images/background2.jpg">
                     <h3>Bio</h3>
                     <p>
                     <ul>
@@ -518,7 +527,8 @@ Reveal.initialize({
     { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
         { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
         { src: 'plugin/zoom-js/zoom.js', async: true },
-            { src: 'plugin/notes/notes.js', async: true }
+            { src: 'plugin/notes/notes.js', async: true },
+    { src: 'reveal-svg-fragment.js', condition: function() { return !!document.querySelector( '[data-svg-fragment]' ); } }
     ]
 });
         </script>
