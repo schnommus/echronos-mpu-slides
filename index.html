@@ -533,21 +533,24 @@ Reveal.initialize({
         { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
         { src: 'plugin/zoom-js/zoom.js', async: true },
             { src: 'plugin/notes/notes.js', async: true },
-    { src: 'reveal-svg-fragment.js', condition: function() { return !!document.querySelector( '[data-svg-fragment]' ); } }
     ]
 });
 
+var svgs = {
+    'usb-arch-svg': ['layer1', 'layer2', 'layer3', 'layer4', 'layer5']
+}
+
 Reveal.addEventListener( 'ready', function( event ) {
-    var svg = document.getElementById('usb-arch-svg').contentDocument;
-    svg.getElementById("layer1").setAttribute("visibility", "hidden");
-    svg.getElementById("layer2").setAttribute("visibility", "hidden");
-    svg.getElementById("layer3").setAttribute("visibility", "hidden");
-    svg.getElementById("layer4").setAttribute("visibility", "hidden");
-    svg.getElementById("layer5").setAttribute("visibility", "hidden");
+    for (var key in svgs) {
+        var svg = document.getElementById(key).contentDocument;
+        for( var layer_id in svgs[key] ) {
+            svg.getElementById(svgs[key][layer_id]).setAttribute("visibility", "hidden");
+        }
+    }
 } );
 
 Reveal.addEventListener( 'fragmentshown', function( event ) {
-    if(event.fragment.parentElement.id == 'usb-arch-svg') {
+    if(event.fragment.parentElement.id in svgs) {
         var svg = event.fragment.parentElement.contentDocument;
         var layer = svg.getElementById(event.fragment.id);
         layer.setAttribute("visibility", "visible");
@@ -555,7 +558,7 @@ Reveal.addEventListener( 'fragmentshown', function( event ) {
 } );
 
 Reveal.addEventListener( 'fragmenthidden', function( event ) {
-    if(event.fragment.parentElement.id == 'usb-arch-svg') {
+    if(event.fragment.parentElement.id in svgs) {
         var svg = event.fragment.parentElement.contentDocument;
         var layer = svg.getElementById(event.fragment.id);
         layer.setAttribute("visibility", "hidden");
