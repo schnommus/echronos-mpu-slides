@@ -104,19 +104,6 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
                 </section>
 
                 <section data-background="images/background2.jpg">
-                    <h3>Memory Protection Unit (MPU) vs. Memory Management Unit (MMU)</h3>
-                    <img width="190" data-src="images/rtos_apps.jpg" class="fragment" data-fragment-index="1">
-                    <img width="540" data-src="images/fpga_mpu.jpg" class="fragment" data-fragment-index="5">
-                    <ul>
-                        <li class="fragment" data-fragment-index="1"><b>Single contiguous address space</b> (no virtual memory)</li>
-                        <li class="fragment" data-fragment-index="2">Key specification is number of <b>protection regions</b></li>
-                        <li class="fragment" data-fragment-index="3">Relies on <b>memory segmentation</b> for isolation (due to limited regions)</li>
-                        <li class="fragment" data-fragment-index="4"><b>Enforces RW, RO, XN</b> permissions by firing an IRQ on violation</li>
-                        <li class="fragment" data-fragment-index="5">Less complicated to implement = <b>cheap, lower power consumption</b></li>
-                    </ul>
-                </section>
-
-                <section data-background="images/background2.jpg">
                     <h3>ARM Cortex-M Features</h3>
                     <table class="wikitable" style="margin-left: -10%">
                         <tr>
@@ -136,6 +123,15 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
                             <td>Yes</td>
                             <td>Yes</td>
                             <td>Yes</td>
+                        </tr>
+                        <tr class="fragment">
+                            <td>Atomic I/O</td>
+                            <td></td>
+                            <td>Opt.</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
                         <tr class="fragment">
                             <td>Bit-Banding</td>
@@ -199,19 +195,21 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
                 </section>
 
                 <section data-background="images/background2.jpg">
-                    <h3>Cortex-M MPUs have</h3>
+                    <h3>Cortex-Ms have</h3>
                     <ul>
                         <li class="fragment"><b>8 protection regions</b> - or 16 on some M7s (rare)</li>
-                        <li class="fragment">Each region has <b>NA/RO/RW & EXEC flags</b></li>
-                        <li class="fragment">Each region has a <b>base address and region size</b>
+                        <li class="fragment">Each region has <b>RO/RW & EXEC flags</b></li>
+                        <li class="fragment">Each region has a <b>base address and region size</b></li>
                             <ul>
                                 <li class="fragment">Region size must be a <b>power-of-2</b></li>
                                 <li class="fragment">Base address must be <b>aligned to region size</b></li>
                             </ul>
-                        </li>
-                        <li class="fragment">Can <b>configure regions to be active in user mode but not privileged mode</b>, or to be active at all times</li>
-                        <li class="fragment">Each region can be split into <b>8 sub-regions</b>, and overlapped with other regions (not currently used)</li>
+                        <li class="fragment">Can configure regions to be active in user mode but not privileged mode (what we're doing), or to be active at all times</li>
+                        <li class="fragment"><b></b> When do I need a TCP/IP stack?  What are they useful for? How do I port a TCP/IP stack to eChronos or my RTOS?</li>
+                        <li class="fragment"><b>Hardware demos:</b> How do I get this running on hardware? What are these systems useful for? (spoiler: anything IoT)</li>
                     </ul>
+                    <br><br>
+                    <b class="fragment">Interspersed... porting tricks & traps</b>
                 </section>
 
                 <section data-background="images/background2.jpg">
