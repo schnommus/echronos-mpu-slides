@@ -73,16 +73,6 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
                     </div>
                 </section>
 
-                <section data-background="images/background2.jpg">
-                    <h3>USB Demo Architecture</h3>
-                    <object id="usb-arch-svg" data="images/usb-arch-compat.svg" type="image/svg+xml">
-                    <a id="layer1" class="fragment"></a>
-                    <a id="layer2" class="fragment"></a>
-                    <a id="layer3" class="fragment"></a>
-                    <a id="layer4" class="fragment"></a>
-                    <a id="layer5" class="fragment"></a>
-                    </object>
-                </section>
 
                 <section data-background="images/background2.jpg">
                     <h3>What am I doing here</h3>
@@ -241,6 +231,50 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
                             </ul>
                         </div>
                     </div>
+                </section>
+
+                <section data-background="images/background2.jpg">
+                    <h3>USB Demo Architecture</h3>
+                    <object id="usb-arch-svg" data="images/usb-arch-compat.svg" type="image/svg+xml">
+                    <a id="layer1" class="fragment"></a>
+                    <a id="layer2" class="fragment"></a>
+                    <a id="layer3" class="fragment"></a>
+                    <a id="layer4" class="fragment"></a>
+                    <a id="layer5" class="fragment"></a>
+                    </object>
+                </section>
+
+                <section data-background="images/background2.jpg">
+                    <h3>USB Stack Demo</h3>
+                </section>
+
+                <section data-background="images/background2.jpg">
+                    <h3>USB Demo - a small cheat...</h3>
+<pre><code class="hlc" style="word-wrap: break-word;">
+int usb_device_irq(void) {
+    // Get the controller interrupt status.
+    usb_device_driver_status = MAP_USBIntStatusControl(USB0_BASE);
+
+    // Disable the USB interrupt, otherwise it will constantly fire
+    // until handled - which we're about to do.
+    ROM_IntDisable(USB_IRQ);
+
+    // Wake up the USB device driver task
+    rtos_interrupt_event_raise(RTOS_INTERRUPT_EVENT_ID_USB_DEVICE);
+
+    return true;
+}
+
+void task_usb_device_driver_fn(void) {
+    while(1) {
+        rtos_signal_wait(RTOS_SIGNAL_ID_USB_DEVICE_INTERRUPT);
+        // Call the internal handler.
+        USBDeviceIntHandlerInternal(0, usb_device_driver_status);
+
+        PRIVILEGED_ACTION(IntEnable(USB_IRQ));
+    }
+}
+</code></pre>
                 </section>
 
                 <section data-background="images/background2.jpg">
