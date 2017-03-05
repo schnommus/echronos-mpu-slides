@@ -215,17 +215,32 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
                 </section>
 
                 <section data-background="images/background2.jpg">
-                    <h3>Hardware Shopping</h3>
-                    <div class="fragment">Ethernet controller, butt-loads of IO, PWM, UART, ICDI etc. ~$30 <br></div>
-                    <div class="fragment">
-                        <img width="600" data-src="images/tm4c1294_board.jpg"> <br>
-                        TI Connected Launchpad: TM4C1294X with an <b>ARM Cortex M4</b> core
-                        <small>Why? Relatively easy to use, inexpensive.</small>
+                    <h3>RTOS Mem. Protection Landscape</h3>
+                    <div id="wrap">
+                        <div id="left_col">
+                            <h4>Have official MPU support</h2>
+                            <ul>
+                                <li class="fragment"><b>Sloth RTOS</b> (world's fastest!)</li>
+                                <li class="fragment"><b>FreeRTOS</b></li>
+                                <li class="fragment"><b>SMX RTOS</b></li>
+                                <li class="fragment"><b>Segger embOS</b></li>
+                                <li class="fragment"><b>AUTOSAR</b> (but not really same league)</li>
+                            </ul>
+                        </div>
+                        <div id="right_col">
+                            <h4>No official MPU support</h2>
+                            <ul>
+                                <li class="fragment"><b>Zephyr RTOS</b></li>
+                                <li class="fragment"><b>Contiki OS</b></li>
+                                <li class="fragment"><b>TI-RTOS</b></li>
+                                <li class="fragment"><b>Micrium uC/OS</b> - used to?</li>
+                                <li class="fragment"><b>uKOS</b></li>
+                                <li class="fragment"><b>Prex</b></li>
+                                <li class="fragment"><b>Everything else!</b></li>
+                                <li class="fragment"><b>eChronos</b> (for now...)</li>
+                            </ul>
+                        </div>
                     </div>
-
-                    <aside class="notes">
-                        Mention the open-source gcc toolchain & openOCD, both available in most linux distro package libraries.
-                    </aside>
                 </section>
 
                 <section data-background="images/background2.jpg">
