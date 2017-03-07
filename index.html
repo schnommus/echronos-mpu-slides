@@ -87,7 +87,6 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
                     <br>
                     <br>
                     <img width="170" data-src="images/geiger_demo.jpg" class="fragment" data-fragment-index="1">
-                    <img width="170" data-src="images/embedded.png" class="fragment" data-fragment-index="2">
                     <img width="170" data-src="images/canboard_top.jpg" class="fragment" data-fragment-index="3">
                     <img width="290" data-src="images/daughterboard_top.jpg" class="fragment" data-fragment-index="4">
                     </p>
@@ -231,6 +230,95 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
                             </ul>
                         </div>
                     </div>
+                </section>
+
+                <section data-background="images/background2.jpg">
+                    <h3>Protection Model</h3>
+                    <object width="500" data="images/model1-compat.svg" type="image/svg+xml"></object>
+                    <div id="wrap" style="font-size:25px">
+                        <div id="left_col">
+                            <h4>Horizontal isolation</h3>
+                            <ul>
+                                <li class="fragment">Restrict accessible memory in tasks to an <b>absolute minimum</b></li>
+                                <li class="fragment">Stack, device registers, shared state</li>
+                                <li class="fragment">Data <b>only</b>, all code R/O (i.e AUTOSAR, Sloth, FreeRTOS, all others...)</li>
+                            </ul>
+                        </div>
+                        <div id="right_col">
+                            <h4>Vertical isolation</h3>
+                            <ul>
+                                <li class="fragment">Only enable the kernel to perform critical operations - configuring the MPU</li>
+                                <li class="fragment">Get a lot for free, assuming tasks aren't explicitly granted access to kernel memory</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/background2.jpg">
+                    <h3>Protection Domains</h3>
+                    <ul>
+                        <li class="fragment"><b>Named</b> area of memory</li>
+                        <li class="fragment">Tasks are only linked to domains they <b>require</b></li>
+                        <li class="fragment">No domains? <b>Stack-only</b> task</li>
+                        <li class="fragment"><b>R/O by default</b>, must annotate for X, RW.</li>
+                    </ul>
+                </section>
+
+                <section data-background="images/background2.jpg" data-transition="convex-in fade-out">
+                    <h3>Domains Example - Task A</h3>
+                    <object width="700" data="images/model2-compat.svg" type="image/svg+xml"></object>
+                </section>
+
+                <section data-background="images/background2.jpg" data-transition="fade-in convex-out">
+                    <h3>Domains Example - Task B</h3>
+                    <object width="700" data="images/model3-compat.svg" type="image/svg+xml"></object>
+                </section>
+
+                <section data-background="images/background2.jpg">
+                    <h3>Declaring protection Domains</h3>
+                    <ul>
+                        <li class="fragment"><b>'Address' domain</b> - fixed size & address (i.e peripherals)</li>
+                        <li class="fragment"><b>'Symbol' domain</b> - c identifiers or object files.</li>
+                    </ul>
+                    <p class="fragment">Example:</p>
+                    <pre class="fragment"><code class="hlxml" style="word-wrap: break-word; font-size: 22px;">
+                ...
+                &lt;protection_domain&gt;
+                    &lt;name&gt;peripheral_uart0&lt;/name&gt;
+                    &lt;domain_size&gt; 0x00001000&lt;/domain_size&gt;
+                    &lt;base_address&gt;0x4000C000&lt;/base_address&gt;
+                &lt;/protection_domain&gt;
+                ...
+                &lt;protection_domain&gt;
+                    &lt;name&gt;uart_state&lt;/name&gt;
+                    &lt;domain_size&gt;32&lt;/domain_size&gt;
+                    &lt;symbols&gt;
+                        &lt;symbol&gt;uart_on&lt;/symbol&gt;
+                    &lt;/symbols&gt;
+                &lt;/protection_domain&gt;
+                ...
+                    </code></pre>
+                </section>
+
+                <section data-background="images/background2.jpg">
+                    <h3>Using protection Domains</h3>
+                    <pre class="fragment"><code class="hlxml" style="word-wrap: break-word; font-size: 22px;">
+                &lt;task&gt;
+                    &lt;name&gt;task_uart&lt;/name&gt;
+                    &lt;function&gt;task_uart_fn&lt;/function&gt;
+                    &lt;priority&gt;30&lt;/priority&gt;
+                    &lt;stack_size&gt;128&lt;/stack_size&gt;
+                    &lt;associated_domains&gt;
+                        &lt;domain&gt;
+                            &lt;name&gt;uart_state&lt;/name&gt;
+                        &lt;/domain&gt;
+                        &lt;domain&gt;
+                            &lt;name&gt;peripheral_uart0&lt;/name&gt;
+                            &lt;writeable&gt;true&lt;/writeable&gt;
+                        &lt;/domain&gt;
+                    &lt;/associated_domains&gt;
+                &lt;/task&gt;
+                    </code></pre>
                 </section>
 
                 <section data-background="images/background2.jpg">

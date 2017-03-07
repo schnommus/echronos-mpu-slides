@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="800"
+   height="400"
+   viewBox="0 0 211.66666 105.83334"
+   version="1.1"
+   id="svg5212"
+   inkscape:version="0.92.1 r"
+   sodipodi:docname="model1.svg">
+  <defs
+     id="defs5206">
+    <linearGradient
+       id="linearGradient5786"
+       osb:paint="solid">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop5784" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient5780"
+       osb:paint="solid">
+      <stop
+         style="stop-color:#00b100;stop-opacity:1;"
+         offset="0"
+         id="stop5778" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5786"
+       id="linearGradient5788"
+       x1="22.183371"
+       y1="184.21223"
+       x2="65.748299"
+       y2="184.21223"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.2924406,0,0,1.7492601,-20.07166,-92.803044)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5786"
+       id="linearGradient5788-3"
+       x1="22.183371"
+       y1="184.21223"
+       x2="65.748299"
+       y2="184.21223"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.2924406,0,0,1.7492601,50.30031,-92.567956)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5786"
+       id="linearGradient5788-5"
+       x1="22.183371"
+       y1="184.21223"
+       x2="65.748299"
+       y2="184.21223"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.2924406,0,0,1.7492601,120.27975,-92.567956)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5786"
+       id="linearGradient5788-6"
+       x1="22.183371"
+       y1="184.21223"
+       x2="65.748299"
+       y2="184.21223"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(4.5571079,0,0,0.52282252,-93.98376,183.06077)" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#000000"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="399.6408"
+     inkscape:cy="331.23908"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="1906"
+     inkscape:window-height="1049"
+     inkscape:window-x="6"
+     inkscape:window-y="23"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata5209">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-191.16664)">
+    <rect
+       style="fill:#ff0000;fill-opacity:0.26666667;stroke:url(#linearGradient5788);stroke-width:2.35313511;stroke-miterlimit:4;stroke-dasharray:4.70626995, 4.70626995;stroke-dashoffset:0"
+       id="rect5776"
+       width="56.30508"
+       height="57.037914"
+       x="8.5990229"
+       y="200.91312" />
+    <rect
+       style="fill:#ff0000;fill-opacity:0.26666667;stroke:url(#linearGradient5788-3);stroke-width:2.35313511;stroke-miterlimit:4;stroke-dasharray:4.70627001, 4.70627001;stroke-dashoffset:0"
+       id="rect5776-7"
+       width="56.30508"
+       height="57.037914"
+       x="78.971001"
+       y="201.14819" />
+    <rect
+       style="fill:#ff0000;fill-opacity:0.26666667;stroke:url(#linearGradient5788-5);stroke-width:2.35313511;stroke-miterlimit:4;stroke-dasharray:4.70627001, 4.70627001;stroke-dashoffset:0"
+       id="rect5776-5"
+       width="56.30508"
+       height="57.037914"
+       x="148.95049"
+       y="201.14819" />
+    <rect
+       style="fill:#00ff00;fill-opacity:0.20784314;stroke:url(#linearGradient5788-6);stroke-width:2.41566205;stroke-miterlimit:4;stroke-dasharray:4.8313238, 4.8313238;stroke-dashoffset:0"
+       id="rect5776-9"
+       width="198.53009"
+       height="17.047611"
+       x="7.1082373"
+       y="270.84732" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot5854"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       transform="matrix(0.38093245,0,0,0.36411798,-18.429746,174.81102)"><flowRegion
+         id="flowRegion5856"><rect
+           id="rect5858"
+           width="128.63527"
+           height="102.18855"
+           x="82.832512"
+           y="108.05571" /></flowRegion><flowPara
+         id="flowPara5860"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1">TASK A</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot5854-1"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       transform="matrix(0.38093245,0,0,0.36411798,50.311738,174.41009)"><flowRegion
+         id="flowRegion5856-2"><rect
+           id="rect5858-7"
+           width="128.63527"
+           height="102.18855"
+           x="82.832512"
+           y="108.05571" /></flowRegion><flowPara
+         id="flowPara5860-0"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1">TASK B</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot5854-9"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       transform="matrix(0.38093245,0,0,0.36411798,121.11492,174.04229)"><flowRegion
+         id="flowRegion5856-3"><rect
+           id="rect5858-6"
+           width="128.63527"
+           height="102.18855"
+           x="82.832512"
+           y="108.05571" /></flowRegion><flowPara
+         id="flowPara5860-06"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1">TASK C</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot5898"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       transform="matrix(0.38352043,0,0,0.36332737,-32.514699,186.51977)"><flowRegion
+         id="flowRegion5900"><rect
+           id="rect5902"
+           width="438.40619"
+           height="90.913727"
+           x="238.396"
+           y="229.27402" /></flowRegion><flowPara
+         id="flowPara5904"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:26.66666794px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#ffffff;fill-opacity:1">eChronos 'kernel'</flowPara></flowRoot>  </g>
+</svg>
