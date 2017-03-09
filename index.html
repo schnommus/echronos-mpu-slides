@@ -93,9 +93,55 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
                 </section>
 
                 <section data-background="images/background2.jpg">
+                    <h3>Why memory protection?</h3>
+                    <ul>
+                        <li class="fragment">All tasks currently run <b>privileged</b></li>
+                        <li class="fragment">Sane memory protection allows us to:
+                            <ul>
+                                <li class="fragment">Prevent modifying shared code areas</li>
+                                <li class="fragment">Detect stack overflows</li>
+                                <li class="fragment">Detect tasks accessing irrelevant devices</li>
+                                <li class="fragment">Mitigate tasks adversely affecting the kernel</li>
+                                <li class="fragment">Mitigate tasks affecting other tasks unintentionally</li>
+                                <li class="fragment">'Sandbox' huge libraries in strict permissions</li>
+                                <li class="fragment">...</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-background="images/background2.jpg">
+                    <h3>RTOS Mem. Protection Landscape</h3>
+                    <div id="wrap">
+                        <div id="left_col">
+                            <h4>Have official MPU support</h2>
+                            <ul>
+                                <li class="fragment"><b>Sloth RTOS</b> (world's fastest!)</li>
+                                <li class="fragment"><b>FreeRTOS</b></li>
+                                <li class="fragment"><b>SMX RTOS</b></li>
+                                <li class="fragment"><b>Segger embOS</b></li>
+                                <li class="fragment"><b>AUTOSAR</b> (but not really same league)</li>
+                                <li class="fragment"><b>eChronos</b> (Soon!)</li>
+                            </ul>
+                        </div>
+                        <div id="right_col">
+                            <h4>No official MPU support</h2>
+                            <ul>
+                                <li class="fragment"><b>Zephyr RTOS</b></li>
+                                <li class="fragment"><b>Contiki OS</b></li>
+                                <li class="fragment"><b>TI-RTOS</b></li>
+                                <li class="fragment"><b>Micrium uC/OS</b> - used to?</li>
+                                <li class="fragment"><b>uKOS</b></li>
+                                <li class="fragment"><b>Prex</b></li>
+                                <li class="fragment"><b>Everything else!</b></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+
+                <section data-background="images/background2.jpg">
                     <h3>Memory Protection Unit (MPU) vs. Memory Management Unit (MMU)</h3>
-                    <img width="190" data-src="images/rtos_apps.jpg" class="fragment" data-fragment-index="1">
-                    <img width="540" data-src="images/fpga_mpu.jpg" class="fragment" data-fragment-index="5">
                     <ul>
                         <li class="fragment" data-fragment-index="1"><b>Single contiguous address space</b> (no virtual memory)</li>
                         <li class="fragment" data-fragment-index="2">Key specification is number of <b>protection regions</b></li>
@@ -103,6 +149,7 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
                         <li class="fragment" data-fragment-index="4"><b>Enforces RW, RO, XN</b> permissions by firing an IRQ on violation</li>
                         <li class="fragment" data-fragment-index="5">Less complicated to implement = <b>cheap, lower power consumption</b></li>
                     </ul>
+                    <img width="400" data-src="images/fpga_mpu.jpg" class="fragment" data-fragment-index="5">
                 </section>
 
                 <section data-background="images/background2.jpg">
@@ -190,7 +237,11 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
                 <section data-background="images/background2.jpg">
                     <h3>Cortex-M MPUs have</h3>
                     <ul>
-                        <li class="fragment"><b>8 protection regions</b> - or 16 on some M7s (rare)</li>
+                        <li class="fragment"><b>8 protection regions</b> - or 16 on some M7s (rare)
+                            <ul>
+                                <li class="fragment">Must re-load on a context switch</li>
+                            </ul>
+                        </li>
                         <li class="fragment">Each region has <b>NA/RO/RW & EXEC flags</b></li>
                         <li class="fragment">Each region has a <b>base address and region size</b>
                             <ul>
@@ -201,35 +252,6 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
                         <li class="fragment">Can <b>configure regions to be active in user mode but not privileged mode</b>, or to be active at all times</li>
                         <li class="fragment">Each region can be split into <b>8 sub-regions</b>, and overlapped with other regions (not currently used)</li>
                     </ul>
-                </section>
-
-                <section data-background="images/background2.jpg">
-                    <h3>RTOS Mem. Protection Landscape</h3>
-                    <div id="wrap">
-                        <div id="left_col">
-                            <h4>Have official MPU support</h2>
-                            <ul>
-                                <li class="fragment"><b>Sloth RTOS</b> (world's fastest!)</li>
-                                <li class="fragment"><b>FreeRTOS</b></li>
-                                <li class="fragment"><b>SMX RTOS</b></li>
-                                <li class="fragment"><b>Segger embOS</b></li>
-                                <li class="fragment"><b>AUTOSAR</b> (but not really same league)</li>
-                            </ul>
-                        </div>
-                        <div id="right_col">
-                            <h4>No official MPU support</h2>
-                            <ul>
-                                <li class="fragment"><b>Zephyr RTOS</b></li>
-                                <li class="fragment"><b>Contiki OS</b></li>
-                                <li class="fragment"><b>TI-RTOS</b></li>
-                                <li class="fragment"><b>Micrium uC/OS</b> - used to?</li>
-                                <li class="fragment"><b>uKOS</b></li>
-                                <li class="fragment"><b>Prex</b></li>
-                                <li class="fragment"><b>Everything else!</b></li>
-                                <li class="fragment"><b>eChronos</b> (for now...)</li>
-                            </ul>
-                        </div>
-                    </div>
                 </section>
 
                 <section data-background="images/background2.jpg">
@@ -332,15 +354,15 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
                                     <th>Operation</th>
                                     <th>Cycles</th>
                                 </tr>
-                                <tr class="fragment">
+                                <tr>
                                     <td>Context switch</td>
                                     <td>30</td>
                                 </tr>
-                                <tr class="fragment">
+                                <tr>
                                     <td>Inline trap</td>
                                     <td>34</td>
                                 </tr>
-                                <tr class="fragment">
+                                <tr>
                                     <td>MPU reconfigure</td>
                                     <td>130</td>
                                 </tr>
@@ -354,15 +376,15 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
                                     <th>Operation</th>
                                     <th>Cycles</th>
                                 </tr>
-                                <tr class="fragment">
+                                <tr>
                                     <td>Context switch</td>
                                     <td>30</td>
                                 </tr>
-                                <tr class="fragment">
+                                <tr>
                                     <td>Inline trap</td>
                                     <td>34</td>
                                 </tr>
-                                <tr class="fragment">
+                                <tr>
                                     <td>MPU reconfigure</td>
                                     <td>130</td>
                                 </tr>
