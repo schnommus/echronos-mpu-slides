@@ -1,0 +1,67 @@
+HAVE TO:
+- Add slide numbers
+- Add 'what is echronos' slide
+   - Talk about static configuration, talk about syscalls ('library' OS)
+- Remove autosar brackets
+- Remove Non-MPU features in Cortex-M comparison table
+- Change horiz/vertical to kernel-task and task-task
+- Describe no MP errors first and THEN MP.
+- Insert slide on what we protect against and what we don't after MP errors.
+- MMU vs MPU -> 2 sides, only talk about MPUs, don't explain MMUs
+- Insert better 'generic' MPU model picture, selects areas of memory etc.
+- Big diagram of protection regions and how they work before how many there are
+- Talk about the protection model BEFORE MPU details
+- Protection domains picture: flatten so makes more sense
+- Protection domains -> extending the eChronos model
+- Describe the problems before the solutions!
+- Explain benchmarking results numbers (i.e explain is context switch cost which needs to reload MPU)
+  - Before actually discussing the results! -> not paper quality, another summer project!
+- Explain what the demo actually DOES and what I will DO and THEN the architecture.
+- Demo picture is too confusing
+
+- Change order to:
+	rtos with MP motivation
+	protection model
+	general MMU vs MPU model
+	echronos model
+	cortex MPU model
+	implementation
+
+-- NOTES FROM IHOR BEGIN HERE
+
+- slide numbers
+- rtos with MP vs without MP
+- what is echronos?
+- autosar?
+- two columns or table mmu vs mpu
+- table size: increase and overlay
+- what a protection region, how does it work, before talking about how many there are.
+        + maybe MPU model in general, then cortex M MPU
+- talk about protection model before talking about MPU details
+- protection domains: picture
+        + flatten domain as in memory range.
+- need a general echronos intro
+        + also how it's static and how it's configured
+        + also how sys calls etc. work on echronos
+- for solutions, what's actually the problem that you solve?
+- talk about your requirements and assumptions explicitly (a slide) early on
+        + what do you protect against
+        + what don't you protect against
+- explain the results first, then talk about limitations of numbers.
+- explain goal of USB demo first: what is it meant to do, then architecture.
+- demo picture is too confusing
+        - add computer in picture
+        - terminology of USB stack
+- explain what you will do in the demo before doing the demo
+
+- what did you do to optimise it: backup slide
+- Alex: bullet points not related to what you are saying
+        + leave out what is not necessarily relevant or interesting to the audience.
+
+
+rtos with MP motivation
+protection model
+general MMU vs MPU model
+echronos model
+cortex MPU model
+implementation
