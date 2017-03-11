@@ -93,8 +93,43 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
                 </section>
 
                 <section data-background="images/background2.jpg">
+                    <h3>Why is eChronos interesting?</h3>
+                    <div class="fragment" data-fragment-index="1">
+                        <b>Open-source</b> <br>
+                        eChronos is under AGPLv3 - <a href="https://github.com/echronos/echronos">github.com/echronos</a><br>
+                    </div>
+                    <br>
+                    <div class="fragment" data-fragment-index="2">
+                        <b>High-assurance</b> <br>
+                        A model of the RTOS' architecture is being mathematically verified*<br>
+                    </div>
+                    <br>
+                    <div class="fragment" data-fragment-index="3">
+                        <b>Miniscule overhead</b> <br>
+                        Component-based construction means that the overhead of using this RTOS is kept at a minimum. How? 2 stages.<br>
+                    </div>
+                    <br>
+                    <small class="fragment" data-fragment-index="2">*model-checking for adherence to our specification without unintended side-effects (abstract, not code-level). 'Progress' proofs would be even nicer, perhaps a future project</small>
+                </section>
+
+                <section data-background="images/background2.jpg">
+                        <h2>eChronos: intended for μcontrollers <br></h2>
+                        <div class="fragment">Tiny amounts of RAM. Talking KB, not GB!</div>
+                        <br>
+                        <b class="fragment">Trade-offs...</b>
+                        <br>
+                        <ul>
+                            <li class="fragment">No MMU or multicore support</li>
+                            <li class="fragment">No POSIX API</li>
+                            <li class="fragment">No dynamic memory management</li>
+                            <li class="fragment">No device drivers</li>
+                        </ul>
+                </section>
+
+                <section data-background="images/background2.jpg">
                     <h3>Why memory protection?</h3>
                     <ul>
+                        <li class="fragment">'Filling the gap' (bare metal eChronos, seL4)</li>
                         <li class="fragment">Without memory protection, all tasks run <b>privileged</b></li>
                         <li class="fragment">Can <b>crash the system</b> (or worse!) with:
                             <ul>
@@ -134,7 +169,7 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
                     <h3>RTOS Mem. Protection Landscape</h3>
                     <div id="wrap">
                         <div id="left_col">
-                            <h4>Have official MPU support</h2>
+                            <h4>Have official support</h2>
                             <ul>
                                 <li class="fragment"><b>Sloth RTOS</b> (world's fastest!)</li>
                                 <li class="fragment"><b>FreeRTOS</b></li>
@@ -145,7 +180,7 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
                             </ul>
                         </div>
                         <div id="right_col">
-                            <h4>No official MPU support</h2>
+                            <h4>No support</h2>
                             <ul>
                                 <li class="fragment"><b>Zephyr RTOS</b></li>
                                 <li class="fragment"><b>Contiki OS</b></li>
@@ -192,6 +227,7 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
                     </ul>
                     <img width="400" data-src="images/fpga_mpu.jpg" class="fragment" data-fragment-index="5">
                 </section>
+
 
                 <section data-background="images/background2.jpg">
                     <h3>ARM Cortex-M Features</h3>
@@ -279,6 +315,13 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
                     <h3>Domains Example - Task B</h3>
                     <object width="700" data="images/model3-compat.svg" type="image/svg+xml"></object>
                 </section>
+
+                <section data-background="images/background2.jpg">
+                    <h2>eChronos: how it fits together...</h2>
+                    <img src="images/customization.png" style="border:0; background:none;"/>
+                    <small class="fragment">*image from RobS's eChronos Monday talk 2 years ago</small>
+                </section>
+
 
                 <section data-background="images/background2.jpg">
                     <h3>Declaring protection Domains</h3>

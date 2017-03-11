@@ -1,8 +1,8 @@
 HAVE TO:
 Y Add slide numbers.
 Y Don't assume peeps know about can board etc.
-- Add 'what is echronos' slide
-   - Talk about static configuration, talk about syscalls ('library' OS)
+Y Add 'what is echronos' slide
+   Y Talk about static configuration, talk about syscalls ('library' OS)
 Y Remove autosar brackets
 Y Remove Non-MPU features in Cortex-M comparison table
 Y Change horiz/vertical to kernel-task and task-task
@@ -12,18 +12,18 @@ Y Insert slide on what we protect against and what we don't after MP errors.
 - MMU vs MPU -> 2 sides, only talk about MPUs, don't explain MMUs
 - Insert better 'generic' MPU model picture, selects areas of memory etc.
 - Big diagram of protection regions and how they work before how many there are
-- Talk about the protection model BEFORE MPU details
+Y Talk about the protection model BEFORE MPU details
 - Protection domains picture: flatten so makes more sense
-- Protection domains -> extending the eChronos model
-- Describe the problems before the solutions!
+Y Protection domains -> extending the eChronos model
+Y Describe the problems before the solutions!
 - Explain benchmarking results numbers (i.e explain is context switch cost which needs to reload MPU)
   - Before actually discussing the results! -> not paper quality, another summer project!
 - Explain what the demo actually DOES and what I will DO and THEN the architecture.
 - Demo picture is too confusing
 
 - Change order to:
-	rtos with MP motivation
-	protection model
+	rtos with MP motivation Y
+	protection model Y
 	general MMU vs MPU model
 	echronos model
 	cortex MPU model
