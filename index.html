@@ -161,6 +161,27 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 
 
                 <section data-background="images/background2.jpg">
+                    <h3>Protection Model</h3>
+                    <object width="500" data="images/model1-compat.svg" type="image/svg+xml"></object>
+                    <div id="wrap" style="font-size:25px">
+                        <div id="left_col">
+                            <h4>Task-Task isolation</h3>
+                            <ul>
+                                <li class="fragment">Restrict accessible memory in tasks to an <b>absolute minimum</b></li>
+                                <li class="fragment">All code R/O (i.e AUTOSAR, Sloth, FreeRTOS, all others...)</li>
+                            </ul>
+                        </div>
+                        <div id="right_col">
+                            <h4>Task-Kernel isolation</h3>
+                            <ul>
+                                <li class="fragment"><b>Only kernel</b> can perform critical operations - configuring the MPU</li>
+                                <li class="fragment">Lot for free, if tasks aren't explicitly granted access to kernel memory</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/background2.jpg">
                     <h3>Memory Protection Unit (MPU) vs. Memory Management Unit (MMU)</h3>
                     <ul>
                         <li class="fragment" data-fragment-index="1"><b>Single contiguous address space</b> (no virtual memory)</li>
@@ -238,27 +259,6 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
                     </ul>
                 </section>
 
-                <section data-background="images/background2.jpg">
-                    <h3>Protection Model</h3>
-                    <object width="500" data="images/model1-compat.svg" type="image/svg+xml"></object>
-                    <div id="wrap" style="font-size:25px">
-                        <div id="left_col">
-                            <h4>Task-Task isolation</h3>
-                            <ul>
-                                <li class="fragment">Restrict accessible memory in tasks to an <b>absolute minimum</b></li>
-                                <li class="fragment">Stack, device registers, shared state</li>
-                                <li class="fragment">Data <b>only</b>, all code R/O (i.e AUTOSAR, Sloth, FreeRTOS, all others...)</li>
-                            </ul>
-                        </div>
-                        <div id="right_col">
-                            <h4>Task-Kernel isolation</h3>
-                            <ul>
-                                <li class="fragment">Only enable the kernel to perform critical operations - configuring the MPU</li>
-                                <li class="fragment">Get a lot for free, assuming tasks aren't explicitly granted access to kernel memory</li>
-                            </ul>
-                        </div>
-                    </div>
-                </section>
 
                 <section data-background="images/background2.jpg">
                     <h3>Protection Domains</h3>
