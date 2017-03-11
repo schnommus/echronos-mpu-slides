@@ -95,18 +95,38 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
                 <section data-background="images/background2.jpg">
                     <h3>Why memory protection?</h3>
                     <ul>
-                        <li class="fragment">All tasks currently run <b>privileged</b></li>
-                        <li class="fragment">Sane memory protection allows us to:
+                        <li class="fragment">Without memory protection, all tasks run <b>privileged</b></li>
+                        <li class="fragment">Can <b>crash the system</b> (or worse!) with:
                             <ul>
-                                <li class="fragment">Prevent modifying shared code areas</li>
-                                <li class="fragment">Detect stack overflows</li>
-                                <li class="fragment">Detect tasks accessing irrelevant devices</li>
-                                <li class="fragment">Mitigate tasks adversely affecting the kernel</li>
-                                <li class="fragment">Mitigate tasks affecting other tasks unintentionally</li>
-                                <li class="fragment">'Sandbox' huge libraries in strict permissions</li>
-                                <li class="fragment">...</li>
+                                <li class="fragment">Stack overflows</li>
+                                <li class="fragment">Tasks modifying kernel memory</li>
+                                <li class="fragment">Tasks corrupting other tasks' memory</li>
+                                <li class="fragment">Writing into code segments</li>
+                                <li class="fragment">Tasks accessing devices incorrectly</li>
+                                <li class="fragment">Trusting a huge library that might have a bug</li>
                             </ul>
                         </li>
+                        <li class="fragment">Memory protection allows us to respond deterministically:
+                            <ul>
+                                <li class="fragment"><b>Hard reboot</b></li>
+                                <li class="fragment"><b>Emergency state</b></li>
+                                <li class="fragment">Restart the offending task</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-background="images/background2.jpg">
+                    <h3>Safety, not security</h3>
+                    <ul>
+                        <li class="fragment">Threat model is <b>human error</b>, not malicious code
+                        <ul>
+                            <li class="fragment">Hardware <b>too limited</b> for conventional security policies</li>
+                            <li class="fragment">Must have source to generate an RTOS binary</li>
+                            <li class="fragment">library RTOS - shoot yourself in the foot if you <b>really</b> want</li>
+                        </ul>
+                        </li>
+                        <li class="fragment"><b>Goal: more difficult to make implementation mistakes</b></li>
                     </ul>
                 </section>
 
@@ -120,7 +140,7 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
                                 <li class="fragment"><b>FreeRTOS</b></li>
                                 <li class="fragment"><b>SMX RTOS</b></li>
                                 <li class="fragment"><b>Segger embOS</b></li>
-                                <li class="fragment"><b>AUTOSAR</b> (but not really same league)</li>
+                                <li class="fragment"><b>AUTOSAR</b></li>
                                 <li class="fragment"><b>eChronos</b> (Soon!)</li>
                             </ul>
                         </div>
@@ -174,15 +194,6 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
                             <td>Yes</td>
                         </tr>
                         <tr class="fragment">
-                            <td>Bit-Banding</td>
-                            <td></a></sup></td>
-                            <td></a></sup></td>
-                            <td></td>
-                            <td>Opt.</td>
-                            <td>Opt.</td>
-                            <td></td>
-                        </tr>
-                        <tr class="fragment">
                             <td><a>MPU (Regions)</a></td>
                             <td></td>
                             <td><a>Opt.<br />
@@ -194,33 +205,6 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
                                     (8)</a></td>
                             <td><a>Opt.<br />
                                     (8,16)</a></td>
-                        </tr>
-                        <tr class="fragment">
-                            <td>Instruction Cache</td>
-                            <td></a></sup></td>
-                            <td></a></sup></td>
-                            <td></a></sup></td>
-                            <td></a></sup></td>
-                            <td></a></sup></td>
-                            <td>Opt.</td>
-                        </tr>
-                        <tr class="fragment">
-                            <td>Data Cache</td>
-                            <td></a></sup></td>
-                            <td></a></sup></td>
-                            <td></a></sup></td>
-                            <td></a></sup></td>
-                            <td></a></sup></td>
-                            <td>Opt.</td>
-                        </tr>
-                        <tr class="fragment">
-                            <td>Vector Table Offset</td>
-                            <td></td>
-                            <td>Opt.</td>
-                            <td>Opt.</td>
-                            <td>Opt.</td>
-                            <td>Opt.</td>
-                            <td>Opt.</td>
                         </tr>
                         <tr class="fragment">
                             <td>Architecture</td>
@@ -259,7 +243,7 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
                     <object width="500" data="images/model1-compat.svg" type="image/svg+xml"></object>
                     <div id="wrap" style="font-size:25px">
                         <div id="left_col">
-                            <h4>Horizontal isolation</h3>
+                            <h4>Task-Task isolation</h3>
                             <ul>
                                 <li class="fragment">Restrict accessible memory in tasks to an <b>absolute minimum</b></li>
                                 <li class="fragment">Stack, device registers, shared state</li>
@@ -267,7 +251,7 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
                             </ul>
                         </div>
                         <div id="right_col">
-                            <h4>Vertical isolation</h3>
+                            <h4>Task-Kernel isolation</h3>
                             <ul>
                                 <li class="fragment">Only enable the kernel to perform critical operations - configuring the MPU</li>
                                 <li class="fragment">Get a lot for free, assuming tasks aren't explicitly granted access to kernel memory</li>
@@ -545,6 +529,8 @@ Reveal.initialize({
             { src: 'plugin/notes/notes.js', async: true },
     ]
 });
+
+Reveal.configure({ slideNumber: true });
 
 var svgs = {
     'usb-arch-svg': ['layer1', 'layer2', 'layer3', 'layer4', 'layer5']

@@ -1,12 +1,14 @@
 HAVE TO:
-- Add slide numbers
+Y Add slide numbers.
+Y Don't assume peeps know about can board etc.
 - Add 'what is echronos' slide
    - Talk about static configuration, talk about syscalls ('library' OS)
-- Remove autosar brackets
-- Remove Non-MPU features in Cortex-M comparison table
-- Change horiz/vertical to kernel-task and task-task
-- Describe no MP errors first and THEN MP.
-- Insert slide on what we protect against and what we don't after MP errors.
+Y Remove autosar brackets
+Y Remove Non-MPU features in Cortex-M comparison table
+Y Change horiz/vertical to kernel-task and task-task
+Y Describe no MP errors first and THEN MP.
+Y Insert slide on what we protect against and what we don't after MP errors.
+- Better visibility for FPGA numbers
 - MMU vs MPU -> 2 sides, only talk about MPUs, don't explain MMUs
 - Insert better 'generic' MPU model picture, selects areas of memory etc.
 - Big diagram of protection regions and how they work before how many there are
