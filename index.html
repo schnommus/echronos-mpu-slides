@@ -217,15 +217,21 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
                 </section>
 
                 <section data-background="images/background2.jpg">
-                    <h3>Memory Protection Unit (MPU) vs. Memory Management Unit (MMU)</h3>
+                    <h3>No protection hardware..</h4>
+                    <object width="800" data="images/no_mpu-compat.svg" type="image/svg+xml"></object>
+                </section>
+
+                <section data-background="images/background2.jpg">
+                    <h3>Memory Protection Unit (MPU)</h3>
+                    <object width="800" data="images/mpu-compat.svg" type="image/svg+xml"></object>
+                </section>
+
+                <section data-background="images/background2.jpg">
+                    <h3>Why MPU and not MMU?</h3>
                     <ul>
-                        <li class="fragment" data-fragment-index="1"><b>Single contiguous address space</b> (no virtual memory)</li>
-                        <li class="fragment" data-fragment-index="2">Key specification is number of <b>protection regions</b></li>
-                        <li class="fragment" data-fragment-index="3">Relies on <b>memory segmentation</b> for isolation (due to limited regions)</li>
-                        <li class="fragment" data-fragment-index="4"><b>Enforces RW, RO, XN</b> permissions by firing an IRQ on violation</li>
-                        <li class="fragment" data-fragment-index="5">Less complicated to implement = <b>cheap, lower power consumption</b></li>
+                        <li class="fragment">Less complicated to implement = <b>cheap, lower power consumption</b></li>
                     </ul>
-                    <img width="400" data-src="images/fpga_mpu.jpg" class="fragment" data-fragment-index="5">
+                    <img width="800" data-src="images/fpga_mpu.jpg" class="fragment">
                 </section>
 
 
@@ -291,7 +297,6 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
                             </ul>
                         </li>
                         <li class="fragment">Can <b>configure regions to be active in user mode but not privileged mode</b>, or to be active at all times</li>
-                        <li class="fragment">Each region can be split into <b>8 sub-regions</b>, and overlapped with other regions (not currently used)</li>
                     </ul>
                 </section>
 

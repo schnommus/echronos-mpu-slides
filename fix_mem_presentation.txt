@@ -8,10 +8,10 @@ Y Remove Non-MPU features in Cortex-M comparison table
 Y Change horiz/vertical to kernel-task and task-task
 Y Describe no MP errors first and THEN MP.
 Y Insert slide on what we protect against and what we don't after MP errors.
-- Better visibility for FPGA numbers
-- MMU vs MPU -> 2 sides, only talk about MPUs, don't explain MMUs
-- Insert better 'generic' MPU model picture, selects areas of memory etc.
-- Big diagram of protection regions and how they work before how many there are
+Y Better visibility for FPGA numbers
+Y MMU vs MPU -> 2 sides, only talk about MPUs, don't explain MMUs
+Y Insert better 'generic' MPU model picture, selects areas of memory etc.
+Y Big diagram of protection regions and how they work before how many there are
 Y Talk about the protection model BEFORE MPU details
 - Protection domains picture: flatten so makes more sense
 Y Protection domains -> extending the eChronos model
@@ -24,7 +24,7 @@ Y Describe the problems before the solutions!
 - Change order to:
 	rtos with MP motivation Y
 	protection model Y
-	general MMU vs MPU model
+	general MMU vs MPU model Y
 	echronos model
 	cortex MPU model
 	implementation
