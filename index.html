@@ -403,6 +403,7 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 
                 <section data-background="images/background2.jpg">
                     <h3>With no optimization...</h3>
+                    <p style="font-size:25px">(Every context switch requires these 3 operations)</p>
                     <div id="wrap">
                         <div id="left_col">
                             <h4>Sloth RTOS</h4>
@@ -449,6 +450,7 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
                             </table>
                         </div>
                     </div>
+                    <small><br/>***Not paper level! comparing eChronos & sloth is an entire summer project in itself</small>
                 </section>
 
                 <section data-background="images/background2.jpg">
@@ -498,8 +500,18 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
                                 </tr>
                             </table>
                         </div>
-                        <p style="font-size:25px">> 2x faster MPU reconfiguring! (real Sloth is even slower!?)</p>
                     </div>
+                        <small><br/>&gt; 2x faster MPU reconfiguring! (real Sloth is even slower!?)</small>
+                </section>
+
+                <section data-background="images/background2.jpg">
+                    <h3>Optimizations</h3>
+                    <ul>
+                        <li class="fragment">Move even more calculations from hot loop to init</li>
+                        <li class="fragment">Take advantage of CM3 & CM4 MPU alias registers</li>
+                        <li class="fragment">Switch from O3 to O2 and annotate specific optimizations in codebase</li>
+                        <li class="fragment">Rewrite MPU configuring and trap wrappers in assembly</li>
+                    </ul>
                 </section>
 
                 <section data-background="images/background2.jpg">
