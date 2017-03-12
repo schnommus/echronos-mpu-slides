@@ -14,7 +14,7 @@ Y Insert better 'generic' MPU model picture, selects areas of memory etc.
 Y Big diagram of protection regions and how they work before how many there are
 Y Talk about the protection model BEFORE MPU details
 Y Protection domains picture: flatten so makes more sense
-- Fix build process picture
+Y Fix build process picture
 Y Protection domains -> extending the eChronos model
 Y Describe the problems before the solutions!
 - Explain benchmarking results numbers (i.e explain is context switch cost which needs to reload MPU)
@@ -26,9 +26,9 @@ Y Describe the problems before the solutions!
 	rtos with MP motivation Y
 	protection model Y
 	general MMU vs MPU model Y
-	echronos model
-	cortex MPU model
-	implementation
+	echronos model Y
+	cortex MPU model Y
+	implementation Y
 
 -- NOTES FROM IHOR BEGIN HERE
 

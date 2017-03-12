@@ -176,7 +176,7 @@
        x2="177.2849"
        y2="168.86755"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.36560342,0.00532319,0.01332007,0.35170156,14.533965,67.283517)" />
+       gradientTransform="matrix(0.36560342,0.00532319,0.01332007,0.35170156,14.533965,74.691855)" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient4651"
@@ -226,7 +226,7 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:zoom="1"
-     inkscape:cx="628.04572"
+     inkscape:cx="425.04572"
      inkscape:cy="337.69178"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -245,7 +245,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -301,17 +301,17 @@
            style="line-height:69.80004311%" /></flowRegion><flowPara
          id="flowPara8461-3-35"
          style="font-size:26.66666794px;line-height:69.80004311%;text-align:center;text-anchor:middle;fill:#ffffff">DOMAIN DECLARATIONS</flowPara></flowRoot>    <rect
-       style="fill:#0000ff;fill-opacity:0.16078431;stroke:#0000ff;stroke-width:0.83789361;stroke-miterlimit:4;stroke-dasharray:1.67578708, 1.67578708;stroke-dashoffset:0;stroke-opacity:1"
+       style="fill:#0000ff;fill-opacity:0.16078431;stroke:#0000ff;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:2,2;stroke-dashoffset:0;stroke-opacity:1"
        id="rect5776-1-92-2-3-6"
-       width="27.766844"
-       height="14.65639"
-       x="81.088921"
-       y="167.94707" />
+       width="29.327967"
+       height="119.00476"
+       x="78.785316"
+       y="168.68954" />
     <flowRoot
        xml:space="preserve"
        id="flowRoot5086"
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       transform="matrix(0.19712309,0,0,0.21802282,14.447547,140.60963)"><flowRegion
+       transform="matrix(0.19712309,0,0,0.21802282,14.182964,193.5263)"><flowRegion
          id="flowRegion5088"><rect
            id="rect5090"
            width="140"
@@ -362,25 +362,6 @@
            style="line-height:69.80004311%" /></flowRegion><flowPara
          id="flowPara8461-3-35-20"
          style="font-size:26.66666794px;line-height:69.80004311%;text-align:center;text-anchor:middle;fill:#ffffff">DOMAIN ASSOCIATIONS</flowPara></flowRoot>    <rect
-       style="fill:#0000ff;fill-opacity:0.16078431;stroke:#0000ff;stroke-width:0.86701012;stroke-miterlimit:4;stroke-dasharray:1.73402, 1.73402;stroke-dashoffset:0;stroke-opacity:1"
-       id="rect5776-1-92-2-3-6-2"
-       width="30.705988"
-       height="14.190609"
-       x="78.603027"
-       y="199.8882" />
-    <flowRoot
-       xml:space="preserve"
-       id="flowRoot5086-9"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       transform="matrix(0.21798875,0,0,0.21109402,5.5675252,173.19902)"><flowRegion
-         id="flowRegion5088-2"><rect
-           id="rect5090-2"
-           width="140"
-           height="83"
-           x="379"
-           y="134" /></flowRegion><flowPara
-         id="flowPara5092-8"
-         style="fill:#ffffff">prj</flowPara></flowRoot>    <rect
        style="fill:#ff00ff;fill-opacity:0.16078431;stroke:#ff00ff;stroke-width:1.01280582;stroke-miterlimit:4;stroke-dasharray:2.02561133, 2.02561133;stroke-dashoffset:0;stroke-opacity:1"
        id="rect5776-1-92-2-3-6-3-9"
        width="42.329224"
@@ -440,12 +421,12 @@
        width="57.513836"
        height="13.822543"
        x="5.2775264"
-       y="232.81421" />
+       y="240.22244" />
     <flowRoot
        xml:space="preserve"
        id="flowRoot8455-8-6-8-9-6"
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:69.80004311%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       transform="matrix(0.2242225,0,0,0.209855,-21.53235,221.44023)"><flowRegion
+       transform="matrix(0.2242225,0,0,0.209855,-21.53235,228.84861)"><flowRegion
          id="flowRegion8457-9-7-7-4-1"
          style="line-height:69.80004311%"><rect
            id="rect8459-7-5-9-7-5"
@@ -456,25 +437,6 @@
            style="line-height:69.80004311%" /></flowRegion><flowPara
          id="flowPara8461-3-35-20-8-5"
          style="font-size:26.66666794px;line-height:69.80004311%;text-align:center;text-anchor:middle;fill:#ffffff">PROTECTION MODE</flowPara></flowRoot>    <rect
-       style="fill:#0000ff;fill-opacity:0.16078431;stroke:#0000ff;stroke-width:0.87673521;stroke-miterlimit:4;stroke-dasharray:1.75347005, 1.75347005;stroke-dashoffset:0;stroke-opacity:1"
-       id="rect5776-1-92-2-3-6-2-4"
-       width="31.584078"
-       height="14.107317"
-       x="79.006706"
-       y="232.46196" />
-    <flowRoot
-       xml:space="preserve"
-       id="flowRoot5086-9-7"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       transform="matrix(0.2242225,0,0,0.209855,3.8826265,205.92942)"><flowRegion
-         id="flowRegion5088-2-65"><rect
-           id="rect5090-2-6"
-           width="140"
-           height="83"
-           x="379"
-           y="134" /></flowRegion><flowPara
-         id="flowPara5092-8-9"
-         style="fill:#ffffff">prj</flowPara></flowRoot>    <rect
        style="fill:#ff00ff;fill-opacity:0.16078431;stroke:#ff00ff;stroke-width:1.02416623;stroke-miterlimit:4;stroke-dasharray:2.0483321, 2.0483321;stroke-dashoffset:0;stroke-opacity:1"
        id="rect5776-1-92-2-3-6-3-9-5"
        width="43.539696"
@@ -519,25 +481,6 @@
            style="line-height:69.80004311%" /></flowRegion><flowPara
          id="flowPara8461-3-35-2-1-2"
          style="font-size:26.66666794px;line-height:69.80004311%;text-align:center;text-anchor:middle;fill:#ffffff">MPU DRIVER</flowPara></flowRoot>    <rect
-       style="fill:#0000ff;fill-opacity:0.16078431;stroke:#0000ff;stroke-width:0.86701012;stroke-miterlimit:4;stroke-dasharray:1.73402002, 1.73402002;stroke-dashoffset:0;stroke-opacity:1"
-       id="rect5776-1-92-2-3-6-2-0"
-       width="30.70599"
-       height="14.190609"
-       x="77.942055"
-       y="272.32462" />
-    <flowRoot
-       xml:space="preserve"
-       id="flowRoot5086-9-7-6"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       transform="matrix(0.2242225,0,0,0.209855,2.3872738,245.93737)"><flowRegion
-         id="flowRegion5088-2-65-8"><rect
-           id="rect5090-2-6-9"
-           width="140"
-           height="83"
-           x="379"
-           y="134" /></flowRegion><flowPara
-         id="flowPara5092-8-9-2"
-         style="fill:#ffffff">prj</flowPara></flowRoot>    <rect
        style="fill:none;fill-opacity:0.26666667;stroke:#00ff00;stroke-width:1.17109537;stroke-miterlimit:4;stroke-dasharray:2.34219052, 2.34219052;stroke-dashoffset:0;stroke-opacity:1"
        id="rect5776-1-92-2-3-61-1-0-6"
        width="57.513836"
@@ -691,7 +634,7 @@
        sodipodi:nodetypes="cccccccc" />
     <path
        style="display:inline;fill:#ffffff;fill-rule:evenodd;stroke:url(#linearGradient4653-1-50-37);stroke-width:0.71697247;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 59.960982,125.30966 15.474712,0.15887 -0.182434,-2.99204 6.269159,5.07361 -5.955588,5.02847 -0.04415,-2.99005 -15.218377,-0.38867 z"
+       d="m 59.960982,132.71804 15.474712,0.15887 -0.182434,-2.99204 6.269159,5.07361 -5.955588,5.02847 -0.04415,-2.99005 -15.218377,-0.38867 z"
        id="path4647-5-8-52"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccccccc" />

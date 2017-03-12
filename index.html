@@ -290,12 +290,7 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
                             </ul>
                         </li>
                         <li class="fragment">Each region has <b>NA/RO/RW & EXEC flags</b></li>
-                        <li class="fragment">Each region has a <b>base address and region size</b>
-                            <ul>
-                                <li class="fragment">Region size must be a <b>power-of-2</b></li>
-                                <li class="fragment">Base address must be <b>aligned to region size</b></li>
-                            </ul>
-                        </li>
+                        <li class="fragment">Each region has a <b>base address and region size</b></li>
                         <li class="fragment">Can <b>configure regions to be active in user mode but not privileged mode</b>, or to be active at all times</li>
                     </ul>
                 </section>
@@ -304,10 +299,13 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
                 <section data-background="images/background2.jpg">
                     <h3>Protection Domains</h3>
                     <ul>
-                        <li class="fragment"><b>Named</b> area of memory</li>
-                        <li class="fragment">Tasks are only linked to domains they <b>require</b></li>
-                        <li class="fragment">No domains? <b>Stack-only</b> task</li>
-                        <li class="fragment"><b>R/O by default</b>, must annotate for X, RW.</li>
+                        <li class="fragment">How to represent memory restrictions?
+                            <ul>
+                                <li class="fragment">Only associate tasks with memory they <b>require</b></li>
+                                <li class="fragment">Want to decouple logical functionality and memory</li>
+                            </ul>
+                        </li>
+                        <li class="fragment">Solution: <b>Protection Domains</b></li>
                     </ul>
                 </section>
 
@@ -327,14 +325,13 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
                 </section>
 
                 <section data-background="images/background2.jpg">
-                    <h2>eChronos: how it fits together...</h2>
+                    <h2>eChronos & prj...</h2>
                     <img src="images/customization.png" style="border:0; background:none;"/>
-                    <small class="fragment">*image from RobS's eChronos Monday talk 2 years ago</small>
+                    <small>*image from RobS's eChronos Monday talk 2 years ago</small>
                 </section>
 
-
                 <section data-background="images/background2.jpg">
-                    <h3>Declaring protection Domains</h3>
+                    <h3>Creating protection Domains</h3>
                     <ul>
                         <li class="fragment"><b>'Address' domain</b> - fixed size & address (i.e peripherals)</li>
                         <li class="fragment"><b>'Symbol' domain</b> - c identifiers or object files.</li>
@@ -383,9 +380,9 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
                 <section data-background="images/background2.jpg">
                     <h3>'System Calls'</h3>
                     <ul>
-                        <li class="fragment">Everything runs in the same address space</li>
-                        <li class="fragment">Try to execute a syscall from a task, we get an <b>MPU fault</b> i.e:</li>
+                        <li class="fragment">'Library' RTOS - everything privileged, syscalls are an ordinary function call.</li>
                         <object class="fragment" width="500" data="images/no_inline_trap-compat.svg" type="image/svg+xml"></object>
+                        <li class="fragment">Won't work if the MPU is configured!</li>
                     </ul>
                 </section>
 
