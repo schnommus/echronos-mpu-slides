@@ -19,8 +19,8 @@ Y Protection domains -> extending the eChronos model
 Y Describe the problems before the solutions!
 Y Explain benchmarking results numbers (i.e explain is context switch cost which needs to reload MPU)
   Y Before actually discussing the results! -> not paper quality, another summer project!
-- Explain what the demo actually DOES and what I will DO and THEN the architecture.
-- Demo picture is too confusing
+Y Explain what the demo actually DOES and what I will DO and THEN the architecture.
+Y Demo picture is too confusing
 
 - Change order to:
 	rtos with MP motivation Y
